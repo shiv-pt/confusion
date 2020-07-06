@@ -25,7 +25,6 @@ class Header extends Component {
     }
 
     toggleModal(){
-        console.log('gotcha')
         this.setState({
             isModalOpen: !this.state.isModalOpen
         });
@@ -33,7 +32,6 @@ class Header extends Component {
 
     handleLogin(event){
         event.preventDefault();
-        console.log('gotcha')
         this.toggleModal();
         alert(" Username: "+ this.username.value + " Password: " + this.password.value
         + " Remember: " + this.remember.checked);
@@ -44,8 +42,8 @@ class Header extends Component {
         return(
             <>
                 <Navbar dark expand="md">
-                        <div className="container">
-                            <NavbarToggler onClick={this.toggleNav} />
+                    <div className="container">
+                        <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className ="mr-auto" href="/">
                             <img src="assets/images/logo.png" height ="30" width="41 "
                             alt="Ristorante Con Fusion" />
@@ -81,10 +79,8 @@ class Header extends Component {
                             </NavItem>
                         </Nav>
                         </Collapse>
-                        </div>
-
+                    </div>
                 </Navbar>
-
                 <Jumbotron>
                     <div className="container">
                         <div className="row row-header">
