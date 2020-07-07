@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Menu from './MenuComponent'
 import Home from './HomeComponent'
-
 import Header from './HeaderComponent'
 import Footer from './FooterComponent'
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
