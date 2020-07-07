@@ -8,7 +8,7 @@ const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
 
-function RenderComments({comments}) {
+function RenderComments({comments, addComment, dishId}) {
     if (comments != null) {
         return (
             <div className='col-12 col-md-5 m-1'>
@@ -30,7 +30,7 @@ function RenderComments({comments}) {
                             );
                         })}
                     </ul>
-                    <CommentForm />
+                    <CommentForm dishId={dishId} addComment={addComment} />
 
                 </div>
             )
@@ -78,7 +78,9 @@ function RenderComments({comments}) {
             </div>
                 <div className='row'>
                     <RenderDish dish={props.dish} />
-                    <RenderComments comments={props.comments} />
+                    <RenderComments comments={props.comments} 
+                        addComment={props.addComment}
+                        dishId={props.dish.id}/>
                 </div>
             </div>
         )
@@ -101,7 +103,8 @@ function RenderComments({comments}) {
         }
 
         handleSubmit(values) {
-            alert('Current State is: ' + JSON.stringify(values));
+            this.toggleModal();
+            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
         }
     
         render() {
@@ -144,8 +147,8 @@ function RenderComments({comments}) {
                                 </FormGroup>
                                 <FormGroup>
                                     <Label htmlFor="comment">Comment</Label>
-                                    <Control.textarea model=".message" id="message" name="message"
-                                        rows="6"
+                                    <Control.textarea model=".comment" id="comment" name="comment"
+                                        rows="5"
                                         className="form-control"></Control.textarea>                                
                                 </FormGroup>
                                 <Button type="submit" value="submit" color="primary">Submit</Button>
